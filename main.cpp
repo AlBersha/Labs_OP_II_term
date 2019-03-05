@@ -22,7 +22,15 @@ int main() {
 		country.set_country_info(str, num);
 		Countries_list.push_back(country);
 	}
+	
+	sort_marks(Countries_list, num);
+	sort_result(Countries_list, num);
 
+	ofstream fout("result.csv");
+	for (int i = 0; i < 10; i++) {
+		fout << Countries_list[i].name << " " << Countries_list[i].result << ";" << endl;
+		cout << Countries_list[i].name << " " << Countries_list[i].result << ";" << endl;
+	}
 
 	file.close();
 	system("pause");
