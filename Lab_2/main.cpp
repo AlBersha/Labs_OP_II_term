@@ -27,6 +27,8 @@ int main() {
 	sort_result(Countries_list, num);
 
 	ofstream fout("result.csv");
+	fout << "List of winners : \n";
+	cout << "List of winners : \n";
 	for (int i = 0; i < 10; i++) {
 		fout << Countries_list[i].name << " " << Countries_list[i].result << ";" << endl;
 		cout << Countries_list[i].name << " " << Countries_list[i].result << ";" << endl;
