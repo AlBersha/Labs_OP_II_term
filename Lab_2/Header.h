@@ -21,3 +21,4 @@ public:
 
 void sort_marks(vector <Country> &Countries_list, int num);
 void sort_result(vector <Country> &Countries_list, int num);
+//comment_about_nothing
