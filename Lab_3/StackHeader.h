@@ -53,7 +53,7 @@ T Stack<T>::pop() {
 	}
 	if (!top->next) {
 		T out = top->symb;
-		delete top;
+		top = NULL;
 		return out;
 	}
 	T out = top->symb;
