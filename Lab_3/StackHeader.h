@@ -23,11 +23,6 @@ Stack<T>::Stack() {
 }
 
 template <typename T>
-Stack<T>::Stack(const T &obj) {
-	this->top = NULL;
-}
-
-template <typename T>
 Stack<T>::~Stack()
 {
 	elem *del = top;
