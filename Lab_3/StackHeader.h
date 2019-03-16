@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+using namespace std;
 
 class Stack
 {
@@ -11,6 +13,7 @@ class Stack
 public:
 	Stack();
 	~Stack();
+	void push(string value);
 	void push(string value);
 	string pop();
 	bool is_empty();
