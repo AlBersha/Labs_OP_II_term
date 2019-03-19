@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-//#include "Header.h"
-#include "StackHeader.h"
-#include "PolishIntertreterHeader.h"
+#include "StackArray.h"
+#include "Header.h"
+#include "QueueArray.h"
 using namespace std;
 
 int main(int argc, const char *argv[]) {
-
 	string line;
 
 	for (int i = 1; i < argc; i++) {
