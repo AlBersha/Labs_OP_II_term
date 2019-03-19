@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 #include "Header.h"
+#include "QueueByArray.h"
 
 #include <stack> // Стандартные библиотеки - ЗАМЕНИТЬ
-#include <queue>
 
 using namespace std;
 
@@ -13,7 +13,7 @@ using namespace std;
 string toPostfix(string &line) {
 
 stack<char> Stack;
-queue<char> outQueue;
+Queue outQueue;
     
 string result;
 
