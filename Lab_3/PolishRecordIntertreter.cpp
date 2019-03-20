@@ -14,8 +14,10 @@ double Interpreter(string line) {
 			CalcString.push(num - 48);
 		}
 		else {
-			num2 = CalcString.pop();
-			num1 = CalcString.pop();
+			num2 = CalcString.top();
+			CalcString.pop()
+			num1 = CalcString.top();
+			CalcString.top()
 			switch(line[i])
 			{
 			case'+':result = num1 + num2;
@@ -27,11 +29,12 @@ double Interpreter(string line) {
 			case '/':result = num1 / num2;
 				break;
 			case '^':result = pow(num1, num2);
+				break;
 			default: cout << "Result could not be found.\n";
 				break;
 			}
 			CalcString.push(result);
 		}
 	}
-	return CalcString.pop();
+	return CalcString.top();
 }
