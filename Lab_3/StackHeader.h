@@ -15,6 +15,7 @@ public:
 	void push(T value);
 	void pop();
 	bool empty();
+	T top();
 };
 
 template <typename T>
@@ -62,3 +63,7 @@ bool Stack<T>::empty() {
 	return false;
 }
 
+template <typename T>
+T Stack<T>::top(){
+	return head->symb;
+}
