@@ -10,7 +10,9 @@ double Interpreter(string line) {
 	double result;
 
 	for (int i = 0; i < line.length(); i++) {
-		if (isdigit(line[i])) {
+		if (line[i] == ' '){
+			continue;
+		else if (isdigit(line[i])) {
 			double num = line[i];
 			CalcString.push(num - 48);
 		}
