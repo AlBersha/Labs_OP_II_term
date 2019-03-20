@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "StackHeader.h"
+#include "Header.h"
 using namespace std;
 
 double Interpreter(string line) {
@@ -10,7 +11,7 @@ double Interpreter(string line) {
 
 	for (int i = 0; i < line.length(); i++) {
 		if (isdigit(line[i])) {
-			int num = line[i];
+			double num = line[i];
 			CalcString.push(num - 48);
 		}
 		else {
