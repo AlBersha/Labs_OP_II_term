@@ -4,9 +4,9 @@
 using namespace std;
 
 double Interpreter(string line) {
-	Stack <int> CalcString;
+	Stack <double> CalcString;
 	int num1, num2;
-	int result;
+	double result;
 
 	for (int i = 0; i < line.length(); i++) {
 		if (isdigit(line[i])) {
