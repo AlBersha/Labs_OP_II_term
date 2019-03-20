@@ -7,28 +7,28 @@ class Stack
 		T symb;
 		elem *next;
 	};
-	elem *top;
+	elem *head;
 
 public:
 	Stack();
 	~Stack();
 	void push(T value);
-	T pop();
-	bool is_empty();
+	void pop();
+	bool empty();
 };
 
 template <typename T>
 Stack<T>::Stack() {
-	top = NULL;
+	head = NULL;
 }
 
 template <typename T>
 Stack<T>::~Stack()
 {
-	elem *del = top;
-	while (top) {
-		del = top;
-		top = top->next;
+	elem *del = head;
+	while (head) {
+		del = head;
+		head = head->next;
 		delete del;
 	}
 }
@@ -37,30 +37,26 @@ template <typename T>
 void Stack<T>::push(T value) {
 	elem *tmp = new elem;
 	tmp->symb = value;
-	tmp->next = top;
-	top = tmp;
+	tmp->next = head;
+	head = tmp;
 }
 
 template <typename T>
-T Stack<T>::pop() {
-	if (is_empty()) {
-		return 0;
+void Stack<T>::pop() {
+	if (empty()) {
+		return ;
 	}
-	if (!top->next) {
-		T out = top->symb;
+	if (!head->next) {
 		top = NULL;
-		return out;
 	}
-	T out = top->symb;
-	elem *del = top;
-	top = top->next;
+	elem *del = head;
+	head = head->next;
 	delete del;
-	return out;
 }
 
 template <typename T>
-bool Stack<T>::is_empty() {
-	if (top == NULL) {
+bool Stack<T>::empty() {
+	if (head == NULL) {
 		return true;
 	}
 	return false;
