@@ -2,18 +2,18 @@
 #include <iostream>
 #include <string>
 #include "Header.h"
-#include "QueueByArray.h"
-
-#include <stack> // Стандартные библиотеки - ЗАМЕНИТЬ
+#include "QueueArray.h"
+#include "QueueHeader.h"
+#include "StackHeader.h"
 
 using namespace std;
 
-#define is_operator(c) (c == '+' || c == '-' || c == '/' || c == '*')
+#define is_operator(c) (c == '+' || c == '-' || c == '/' || c == '*' || c == '^')
 
 string toPostfix(string &line) {
 
-stack<char> Stack;
-Queue outQueue;
+Stack <char> inStack;
+Queue <char> outQueue;
     
 string result;
 
@@ -27,39 +27,39 @@ for (int i=0; i< line.length(); i++)
     
     else if (is_operator(line[i])) // Если оператор
     {
-        while (!Stack.empty())
+        while (!inStack.empty())
         {
-            if (is_operator(Stack.top())
-                && (op_priority(line[i]) <= op_priority(Stack.top())))
+            if (is_operator(inStack.top())
+                && (op_priority(line[i]) <= op_priority(inStack.top())))
             {
-                outQueue.push(Stack.top());
-                Stack.pop();
+                outQueue.push(inStack.top());
+                inStack.pop();
                 
             }
             else
                 break;
         }
-        Stack.push(line[i]);
+        inStack.push(line[i]);
     }
     
     else if(line[i] == '(')
-        Stack.push(line[i]);
+        inStack.push(line[i]);
     
     else if(line[i] == ')')
     {
         bool logic = false;
         // До появления на вершине стека левой скобки перекладывать операторы из стека в очередь вывода
-        while (!Stack.empty())
+        while (!inStack.empty())
         {
-            if (Stack.top() == '(')
+            if (inStack.top() == '(')
             {
                 logic = true;
                 break;
             }
             else
             {
-                outQueue.push(Stack.top());
-                Stack.pop();
+                outQueue.push(inStack.top());
+                inStack.pop();
             }
         }
         // Если стек кончится до нахождения левой скобки, то была пропущена скобка
@@ -69,14 +69,14 @@ for (int i=0; i< line.length(); i++)
             exit(1);
         }
         // выкидываем левую скобку из стека (не добавляем в очередь вывода)
-        Stack.pop();
+        inStack.pop();
     }
 }
 
-while (!Stack.empty())
+while (!inStack.empty())
 {
-    outQueue.push(Stack.top());
-    Stack.pop();
+    outQueue.push(inStack.top());
+    inStack.pop();
 }
 
 while (!outQueue.empty())
@@ -92,6 +92,8 @@ int op_priority(const char c) // Приоритет булевой операц�
 {
     switch(c)
     {
+        case '^':
+            return 3;
         case '*':
         case '/':
             return 2;
