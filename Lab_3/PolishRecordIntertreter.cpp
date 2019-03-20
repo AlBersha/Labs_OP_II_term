@@ -10,7 +10,7 @@ double Interpreter(string line) {
 	double result;
 
 	for (int i = 0; i < line.length(); i++) {
-		if (line[i] == ' '){
+		if (line[i] == ' ')
 			continue;
 		else if (isdigit(line[i])) {
 			double num = line[i];
@@ -18,9 +18,9 @@ double Interpreter(string line) {
 		}
 		else {
 			num2 = CalcString.top();
-			CalcString.pop()
+			CalcString.pop();
 			num1 = CalcString.top();
-			CalcString.top()
+			CalcString.top();
 			switch(line[i])
 			{
 			case'+':result = num1 + num2;
